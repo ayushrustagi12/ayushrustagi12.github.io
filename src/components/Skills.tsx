@@ -6,44 +6,46 @@ export const Skills = () => {
 
   const skillCategories = [
     {
-      category: "Programming Languages & Markup",
-      skills: ["PHP (CorePHP, Laravel)", "JavaScript", "HTML5", "CSS3", "SASS", "Mustache"],
+      category: "Core Technologies",
+      skills: [
+        { name: "Laravel", level: 95 },
+        { name: "ReactJS", level: 90 },
+        { name: "PHP", level: 95 },
+        { name: "JavaScript", level: 85 },
+        { name: "MySQL", level: 90 }
+      ],
       color: "from-blue-500 to-cyan-500"
     },
     {
-      category: "Frameworks & Libraries",
-      skills: ["Laravel", "ReactJS (Hooks, Context API, JSX)", "Redux (basic knowledge)", "Bootstrap", "jQuery"],
+      category: "Frontend & Styling",
+      skills: [
+        { name: "HTML5/CSS3", level: 95 },
+        { name: "SASS", level: 85 },
+        { name: "Bootstrap", level: 90 },
+        { name: "Responsive Design", level: 95 },
+        { name: "jQuery", level: 80 }
+      ],
       color: "from-purple-500 to-pink-500"
     },
     {
-      category: "Databases & Query Tools",
-      skills: ["MySQL", "Laravel Query Builder", "DBeaver"],
+      category: "Backend & APIs",
+      skills: [
+        { name: "RESTful APIs", level: 90 },
+        { name: "Laravel Middleware", level: 85 },
+        { name: "Authentication", level: 90 },
+        { name: "Database Design", level: 85 }
+      ],
       color: "from-green-500 to-emerald-500"
     },
     {
-      category: "APIs & Backend",
-      skills: ["RESTful APIs", "Laravel Middleware", "API Integration", "Token-based Auth"],
-      color: "from-orange-500 to-red-500"
-    },
-    {
-      category: "CMS & Template Engines",
-      skills: ["Drupal 8/9 CMS", "Blade", "Alfresco", "Olapic"],
-      color: "from-indigo-500 to-purple-500"
-    },
-    {
       category: "DevOps & Tools",
-      skills: ["Jenkins", "Visual Studio Code", "Mobaxterm", "Postman"],
-      color: "from-teal-500 to-blue-500"
-    },
-    {
-      category: "Web Development Concepts",
-      skills: ["Responsive Design", "Component-Based Architecture", "Cross-Browser Compatibility", "Performance Optimization"],
-      color: "from-rose-500 to-pink-500"
-    },
-    {
-      category: "Other Tools & Practices",
-      skills: ["Agile/Scrum Methodology", "Code Reviews", "CI/CD Pipelines", "Version Control (Git/Gitflow)", "Team Collaboration"],
-      color: "from-yellow-500 to-orange-500"
+      skills: [
+        { name: "Git/GitFlow", level: 90 },
+        { name: "Jenkins CI/CD", level: 80 },
+        { name: "Agile/Scrum", level: 95 },
+        { name: "Code Reviews", level: 90 }
+      ],
+      color: "from-orange-500 to-red-500"
     }
   ];
 
@@ -57,7 +59,7 @@ export const Skills = () => {
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12 hover:scale-105 transition-transform duration-300">
-          Technical Skills
+          Technical Expertise
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
         </h2>
         
@@ -68,30 +70,42 @@ export const Skills = () => {
               className="group bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-slate-700 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02] hover:bg-slate-800/50 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <h3 className={`text-xl font-bold mb-4 bg-gradient-to-r ${category.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}>
+              <h3 className={`text-xl font-bold mb-6 bg-gradient-to-r ${category.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}>
                 {category.category}
               </h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
-                  <span
+                  <div
                     key={skillIndex}
-                    onMouseEnter={() => setHoveredSkill(skill)}
+                    onMouseEnter={() => setHoveredSkill(skill.name)}
                     onMouseLeave={() => setHoveredSkill(null)}
-                    className={`
-                      bg-slate-700/50 text-slate-300 px-3 py-1 rounded-lg text-sm border border-slate-600 
-                      cursor-pointer transition-all duration-300 transform hover:scale-110 hover:shadow-lg
-                      ${hoveredSkill === skill 
-                        ? `bg-gradient-to-r ${category.color} text-white border-transparent shadow-lg scale-110` 
-                        : 'hover:border-blue-500/50 hover:text-white hover:bg-slate-700'
-                      }
-                    `}
-                    style={{ 
-                      animationDelay: `${(index * 0.1) + (skillIndex * 0.05)}s`,
-                      transitionDelay: `${skillIndex * 0.02}s`
-                    }}
+                    className="space-y-2"
                   >
-                    {skill}
-                  </span>
+                    <div className="flex justify-between items-center">
+                      <span className={`
+                        text-slate-300 transition-all duration-300 font-medium
+                        ${hoveredSkill === skill.name ? 'text-white scale-105' : ''}
+                      `}>
+                        {skill.name}
+                      </span>
+                      <span className="text-slate-400 text-sm">{skill.level}%</span>
+                    </div>
+                    <div className="w-full bg-slate-700/50 rounded-full h-2">
+                      <div
+                        className={`
+                          h-2 rounded-full transition-all duration-1000 ease-out
+                          ${hoveredSkill === skill.name 
+                            ? `bg-gradient-to-r ${category.color} shadow-lg` 
+                            : 'bg-slate-600'
+                          }
+                        `}
+                        style={{
+                          width: `${skill.level}%`,
+                          transitionDelay: `${skillIndex * 0.1}s`
+                        }}
+                      ></div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>

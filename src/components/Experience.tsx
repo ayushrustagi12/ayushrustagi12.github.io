@@ -1,9 +1,10 @@
 
-import { Calendar, MapPin, Users, TrendingUp, Zap } from "lucide-react";
+import { Calendar, MapPin, Users, TrendingUp, Zap, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 export const Experience = () => {
   const [hoveredExp, setHoveredExp] = useState<number | null>(null);
+  const [expandedExp, setExpandedExp] = useState<number | null>(null);
 
   const experiences = [
     {
@@ -13,7 +14,13 @@ export const Experience = () => {
       location: "Remote",
       icon: Zap,
       color: "from-blue-500 to-cyan-500",
-      achievements: [
+      highlights: [
+        "Increased development speed by 20% with modular architecture",
+        "Reduced server load by 20% and page load time by 30%",
+        "Led 6-member Agile team with 25% sprint velocity improvement",
+        "Achieved 95% on-time delivery rate for 4+ major releases"
+      ],
+      allAchievements: [
         "Engineered scalable web applications using Laravel and ReactJS, increasing development speed for new modules by 20% through reusable, modular architecture.",
         "Designed and maintained optimized MySQL schemas, leveraging migrations and seeders to manage complex data relationships.",
         "Built secure RESTful APIs and integrated them with React via custom hooks, reducing frontend API fetch failures by 15%.",
@@ -35,7 +42,13 @@ export const Experience = () => {
       location: "Remote",
       icon: TrendingUp,
       color: "from-purple-500 to-pink-500",
-      achievements: [
+      highlights: [
+        "Reduced editorial time by 30% with custom Drupal modules",
+        "Expedited site migrations by 50% with REST endpoints",
+        "Achieved 98% satisfaction rate in quarterly reviews",
+        "Mentored 5+ developers, improved code review time by 25%"
+      ],
+      allAchievements: [
         "Architected and maintained responsive Drupal 8/9 platforms with custom themes and modules using PHP, HTML5, CSS3, and SASS.",
         "Created custom plugins and extended Drupal core functionality to streamline content workflows, reducing editorial time by 30%.",
         "Engineered interactive frontend modules using JavaScript/jQuery, enhancing user engagement across 3+ product interfaces.",
@@ -52,7 +65,7 @@ export const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-16 px-4 bg-slate-800/30 relative overflow-hidden">
+    <section id="experience" className="py-16 px-2 md:px-4 bg-slate-800/30 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 right-20 w-24 h-24 bg-blue-500/5 rounded-full blur-xl animate-pulse"></div>
@@ -72,7 +85,7 @@ export const Experience = () => {
               onMouseEnter={() => setHoveredExp(index)}
               onMouseLeave={() => setHoveredExp(null)}
               className={`
-                group bg-slate-800/40 backdrop-blur-sm rounded-xl p-6 md:p-8 border border-slate-700 
+                group bg-slate-800/40 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-slate-700 
                 transition-all duration-500 cursor-pointer transform animate-fade-in
                 ${hoveredExp === index 
                   ? 'border-blue-500/50 bg-slate-800/60 scale-[1.02] shadow-2xl shadow-blue-500/10' 
@@ -101,33 +114,70 @@ export const Experience = () => {
                 <div className="flex flex-col md:items-end text-slate-400 mt-2 md:mt-0">
                   <div className="flex items-center gap-2 mb-1 group-hover:text-slate-300 transition-colors duration-300">
                     <Calendar size={16} />
-                    <span>{exp.period}</span>
+                    <span className="text-sm">{exp.period}</span>
                   </div>
                   <div className="flex items-center gap-2 group-hover:text-slate-300 transition-colors duration-300">
                     <MapPin size={16} />
-                    <span>{exp.location}</span>
+                    <span className="text-sm">{exp.location}</span>
                   </div>
                 </div>
               </div>
               
-              <div className="grid gap-3">
-                {exp.achievements.map((achievement, achIndex) => (
+              {/* Key Highlights */}
+              <div className="grid gap-2 mb-4">
+                <h4 className="text-sm font-semibold text-blue-400 mb-2">Key Achievements:</h4>
+                {exp.highlights.map((highlight, achIndex) => (
                   <div
                     key={achIndex}
                     className="flex items-start gap-3 text-slate-300 group-hover:text-slate-200 transition-all duration-300"
-                    style={{ 
-                      transitionDelay: `${achIndex * 0.02}s`,
-                      transform: hoveredExp === index ? 'translateX(8px)' : 'translateX(0)'
-                    }}
                   >
                     <div className={`
                       w-2 h-2 rounded-full mt-2 flex-shrink-0 transition-all duration-300
                       ${hoveredExp === index ? `bg-gradient-to-r ${exp.color}` : 'bg-blue-400'}
                     `}></div>
-                    <p className="leading-relaxed">{achievement}</p>
+                    <p className="leading-relaxed text-sm">{highlight}</p>
                   </div>
                 ))}
               </div>
+
+              {/* Expand/Collapse Button */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setExpandedExp(expandedExp === index ? null : index);
+                }}
+                className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 text-sm font-medium mt-4"
+              >
+                {expandedExp === index ? (
+                  <>
+                    <ChevronUp size={16} />
+                    Show Less
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown size={16} />
+                    View All Details
+                  </>
+                )}
+              </button>
+
+              {/* Expanded Details */}
+              {expandedExp === index && (
+                <div className="mt-4 pt-4 border-t border-slate-600 animate-fade-in">
+                  <h4 className="text-sm font-semibold text-slate-400 mb-3">Complete Achievement List:</h4>
+                  <div className="grid gap-2">
+                    {exp.allAchievements.map((achievement, achIndex) => (
+                      <div
+                        key={achIndex}
+                        className="flex items-start gap-3 text-slate-400 hover:text-slate-300 transition-all duration-300"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-2 flex-shrink-0"></div>
+                        <p className="leading-relaxed text-sm">{achievement}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

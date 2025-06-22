@@ -102,12 +102,10 @@ export const Hero = () => {
             <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
           </h2>
           <p className="text-slate-300 leading-relaxed hover:text-slate-200 transition-colors duration-300">
-            Impact-driven Full-Stack Web Developer with 7+ years of experience delivering scalable, 
-            high-performance web applications using Laravel, ReactJS, PHP, and MySQL. Expertise in 
-            building secure RESTful APIs, integrating modern UI/UX, and enhancing performance by up to 30%. 
-            Proven leadership in managing offshore Agile teams and migrating legacy systems. Strong focus 
-            on clean architecture, reusable component-based design, and continuous improvement through 
-            CI/CD pipelines and code quality practices.
+            <span className="text-blue-400 font-semibold">7+ years</span> of Full-Stack expertise in <span className="text-purple-400 font-semibold">Laravel & ReactJS</span>. 
+            Led teams, optimized performance by <span className="text-green-400 font-semibold">30%</span>, 
+            and delivered <span className="text-blue-400 font-semibold">95% on-time</span> project completion rates.
+            Specialized in scalable architecture and modern development practices.
           </p>
         </div>
       </div>
