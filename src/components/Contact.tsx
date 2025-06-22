@@ -43,11 +43,23 @@ export const Contact = () => {
 
   return (
     <section id="contact" className="py-16 px-4 relative overflow-hidden">
-      {/* Animated background */}
+      {/* Animated background with tech elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-gradient-to-r from-blue-500/3 to-purple-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Subtle tech pattern */}
+        <div className="absolute top-10 right-20 opacity-5 text-slate-400 font-mono text-xs transform rotate-45 pointer-events-none">
+          <div>function connect() {`{`}</div>
+          <div className="ml-2">return collaboration;</div>
+          <div>{`}`}</div>
+        </div>
+        
+        <div className="absolute bottom-32 left-20 opacity-5 text-slate-400 font-mono text-xs transform -rotate-12 pointer-events-none">
+          <div>{"// Let's build together"}</div>
+          <div>await project.launch();</div>
+        </div>
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10">
@@ -129,8 +141,7 @@ export const Contact = () => {
           <div className="text-center">
             <Button
               onClick={() => window.open("mailto:rustagiayush12@gmail.com", "_blank")}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/25 group animate-bounce"
-              style={{ animationDelay: '0.5s' }}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-blue-500/25 group"
             >
               <Send className="mr-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
               Send Email

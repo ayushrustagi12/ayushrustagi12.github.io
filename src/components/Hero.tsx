@@ -22,10 +22,26 @@ export const Hero = () => {
 
   return (
     <section id="about" className="pt-20 pb-16 px-4 relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Animated background with tech elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        
+        {/* Subtle code snippet overlay */}
+        <div className="absolute top-1/4 right-1/4 opacity-5 text-slate-400 font-mono text-sm transform rotate-12 pointer-events-none">
+          <div>const developer = {`{`}</div>
+          <div className="ml-2">name: 'Ayush',</div>
+          <div className="ml-2">stack: ['React', 'Laravel'],</div>
+          <div className="ml-2">passion: 'creating'</div>
+          <div>{`}`};</div>
+        </div>
+        
+        <div className="absolute bottom-1/4 left-1/4 opacity-5 text-slate-400 font-mono text-sm transform -rotate-12 pointer-events-none">
+          <div>{"<component>"}</div>
+          <div className="ml-2">{"<innovation />"}</div>
+          <div className="ml-2">{"<excellence />"}</div>
+          <div>{"</component>"}</div>
+        </div>
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10">
@@ -74,8 +90,7 @@ export const Hero = () => {
           
           <Button
             onClick={scrollToContact}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 animate-bounce"
-            style={{ animationDelay: '1s' }}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
           >
             Get In Touch
           </Button>
