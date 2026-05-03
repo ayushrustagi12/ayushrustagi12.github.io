@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Code, Database, Palette, Settings } from "lucide-react";
 
@@ -7,49 +6,111 @@ export const Skills = () => {
 
   const skillCategories = [
     {
-      category: "Core Technologies",
+      category: "Languages",
       icon: Code,
       skills: [
-        "Laravel", "ReactJS", "PHP", "JavaScript", "MySQL"
+        "Python",
+        "PHP (Laravel, Core PHP)",
+        "JavaScript (ES6+)",
+        "HTML5",
+        "CSS3",
+        "SASS",
       ],
       color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-500/10"
+      bgColor: "bg-blue-500/10",
     },
     {
-      category: "Frontend & Styling",
+      category: "Frameworks & Libraries",
       icon: Palette,
       skills: [
-        "HTML5/CSS3", "SASS", "Bootstrap", "Responsive Design", "jQuery"
+        "ReactJS (Hooks, Context API, Redux Toolkit)",
+        "Flask",
+        "Laravel",
+        "Bootstrap",
+        "jQuery",
+        "Pandas",
       ],
       color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-500/10"
+      bgColor: "bg-purple-500/10",
     },
     {
-      category: "Backend & APIs",
+      category: "Databases & Search",
       icon: Database,
-      skills: [
-        "RESTful APIs", "Laravel Middleware", "Authentication", "Database Design"
-      ],
+      skills: ["MySQL", "Elasticsearch", "Laravel Query Builder", "DBeaver"],
       color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-500/10"
+      bgColor: "bg-green-500/10",
     },
     {
-      category: "DevOps & Tools",
+      category: "APIs & Authentication",
       icon: Settings,
       skills: [
-        "Git/GitFlow", "Jenkins CI/CD", "Agile/Scrum", "Code Reviews"
+        "RESTful APIs",
+        "Laravel Sanctum",
+        "Token-based Auth",
+        "Middleware",
+        "API Integration",
       ],
       color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-500/10"
-    }
+      bgColor: "bg-orange-500/10",
+    },
+    {
+      category: "AI & Developer Tools",
+      icon: Code,
+      skills: [
+        "GitHub Copilot",
+        "ChatGPT",
+        "Claude AI",
+        "Postman",
+        "VS Code",
+        "MobaXterm",
+      ],
+      color: "from-rose-500 to-pink-500",
+      bgColor: "bg-rose-500/10",
+    },
+    {
+      category: "DevOps & CI/CD",
+      icon: Settings,
+      skills: ["Jenkins", "Git", "Gitflow", "CI/CD Pipelines"],
+      color: "from-cyan-500 to-blue-500",
+      bgColor: "bg-cyan-500/10",
+    },
+    {
+      category: "CMS & Templating",
+      icon: Palette,
+      skills: ["Drupal 8/9", "Blade", "Alfresco"],
+      color: "from-indigo-500 to-purple-500",
+      bgColor: "bg-indigo-500/10",
+    },
+    {
+      category: "Agile & Practices",
+      icon: Database,
+      skills: [
+        "Agile/Scrum (SAFe)",
+        "PI Planning",
+        "Sprint Planning",
+        "Retrospectives",
+        "Code Reviews",
+        "Component-Based Architecture",
+        "Performance Optimization",
+        "Clean Architecture",
+      ],
+      color: "from-teal-500 to-green-500",
+      bgColor: "bg-teal-500/10",
+    },
   ];
 
   return (
-    <section id="skills" className="py-12 sm:py-16 px-4 relative overflow-hidden">
+    <section
+      id="skills"
+      className="py-12 sm:py-16 px-4 relative overflow-hidden"
+    >
       {/* Animated background */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-4 sm:left-10 w-24 h-24 sm:w-32 sm:h-32 bg-blue-500/5 rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-4 sm:right-10 w-32 h-32 sm:w-40 sm:h-40 bg-purple-500/5 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div
+          className="absolute bottom-20 right-4 sm:right-10 w-32 h-32 sm:w-40 sm:h-40 bg-purple-500/5 rounded-full blur-2xl animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -57,7 +118,7 @@ export const Skills = () => {
           Technical Expertise
           <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-3 sm:mt-4 rounded-full"></div>
         </h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon;
@@ -68,14 +129,18 @@ export const Skills = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                  <div className={`p-2 sm:p-3 rounded-lg ${category.bgColor} group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`p-2 sm:p-3 rounded-lg ${category.bgColor} group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                  <h3 className={`text-lg sm:text-xl font-bold bg-gradient-to-r ${category.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}>
+                  <h3
+                    className={`text-lg sm:text-xl font-bold bg-gradient-to-r ${category.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}
+                  >
                     {category.category}
                   </h3>
                 </div>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {category.skills.map((skill, skillIndex) => (
                     <div
@@ -84,9 +149,10 @@ export const Skills = () => {
                       onMouseLeave={() => setHoveredSkill(null)}
                       className={`
                         px-3 py-2 sm:px-4 sm:py-3 rounded-lg border transition-all duration-300 cursor-pointer
-                        ${hoveredSkill === skill 
-                          ? `bg-gradient-to-r ${category.color} border-transparent text-white shadow-lg scale-105` 
-                          : 'bg-slate-700/30 border-slate-600 text-slate-300 hover:border-slate-500 hover:bg-slate-700/50'
+                        ${
+                          hoveredSkill === skill
+                            ? `bg-gradient-to-r ${category.color} border-transparent text-white shadow-lg scale-105`
+                            : "bg-slate-700/30 border-slate-600 text-slate-300 hover:border-slate-500 hover:bg-slate-700/50"
                         }
                       `}
                     >
@@ -108,18 +174,38 @@ export const Skills = () => {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {[
-              { icon: "🚀", text: "Performance Optimization", desc: "30% improvement" },
-              { icon: "👥", text: "Team Leadership", desc: "Cross-functional teams" },
-              { icon: "⚡", text: "Fast Delivery", desc: "95% on-time completion" },
-              { icon: "🔧", text: "Problem Solving", desc: "Complex challenges" }
+              {
+                icon: "🚀",
+                text: "Performance Optimization",
+                desc: "30% improvement",
+              },
+              {
+                icon: "👥",
+                text: "Team Leadership",
+                desc: "Cross-functional teams",
+              },
+              {
+                icon: "⚡",
+                text: "Fast Delivery",
+                desc: "95% on-time completion",
+              },
+              {
+                icon: "🔧",
+                text: "Problem Solving",
+                desc: "Complex challenges",
+              },
             ].map((strength, index) => (
               <div
                 key={index}
                 className="text-center p-3 sm:p-4 rounded-lg bg-slate-700/20 hover:bg-slate-700/40 transition-all duration-300 hover:scale-105"
               >
                 <div className="text-2xl sm:text-3xl mb-2">{strength.icon}</div>
-                <div className="text-sm sm:text-base font-semibold text-white mb-1">{strength.text}</div>
-                <div className="text-xs sm:text-sm text-slate-400">{strength.desc}</div>
+                <div className="text-sm sm:text-base font-semibold text-white mb-1">
+                  {strength.text}
+                </div>
+                <div className="text-xs sm:text-sm text-slate-400">
+                  {strength.desc}
+                </div>
               </div>
             ))}
           </div>
